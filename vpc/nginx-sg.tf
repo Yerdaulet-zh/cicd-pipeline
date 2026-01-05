@@ -4,6 +4,15 @@ resource "aws_security_group" "nginx" {
   tags   = { Name = "nginx-sg" }
 }
 
+resource "aws_security_group_rule" "nginx_ingress_ssh" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.nginx.id
+}
+
 resource "aws_security_group_rule" "nginx_ingress_http" {
   type              = "ingress"
   from_port         = 80

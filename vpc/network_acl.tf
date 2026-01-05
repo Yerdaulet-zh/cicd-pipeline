@@ -7,6 +7,7 @@ resource "aws_network_acl" "acl" {
 
 resource "aws_network_acl_rule" "network_acl_tcp_ingress" {
   for_each = {
+    22  = 22
     80  = 80
     443 = 443
   }
@@ -23,6 +24,7 @@ resource "aws_network_acl_rule" "network_acl_tcp_ingress" {
 
 resource "aws_network_acl_rule" "network_acl_tcp_egress" {
   for_each = {
+    22  = 22
     80  = 80
     443 = 443
   }
