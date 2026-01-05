@@ -5,38 +5,26 @@ resource "aws_network_acl" "acl" {
   }
 }
 
-resource "aws_network_acl_rule" "network_acl_tcp_ingress" {
-  for_each = {
-    22  = 22
-    80  = 80
-    443 = 443
-  }
-
+resource "aws_network_acl_rule" "acl_rule_ingress" {
   network_acl_id = aws_network_acl.acl.id
-  rule_number    = each.key
+  rule_number    = 100
   egress         = false
   protocol       = "tcp"
-  rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
-  from_port      = each.key
-  to_port        = each.value
+  rule_action    = "allow"
+  from_port      = 0
+  to_port        = 65535
 }
 
-resource "aws_network_acl_rule" "network_acl_tcp_egress" {
-  for_each = {
-    22  = 22
-    80  = 80
-    443 = 443
-  }
-
+resource "aws_network_acl_rule" "acl_rule_egress" {
   network_acl_id = aws_network_acl.acl.id
-  rule_number    = each.key + 1
+  rule_number    = 100
   egress         = true
   protocol       = "tcp"
-  rule_action    = "allow"
   cidr_block     = "0.0.0.0/0"
-  from_port      = each.key
-  to_port        = each.value
+  rule_action    = "allow"
+  from_port      = 0
+  to_port        = 65535
 }
 
 resource "aws_network_acl_association" "network_acl_association" {
