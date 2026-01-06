@@ -5,6 +5,7 @@ resource "aws_instance" "nginx_instance" {
   vpc_security_group_ids = [var.sg_nginx_id]
   key_name               = var.ssh_key_pair_name
   private_ip             = local.nginx_private_ip
+  iam_instance_profile   = aws_iam_instance_profile.nginx_profile.name
 
   root_block_device {
     volume_type = "gp2"
