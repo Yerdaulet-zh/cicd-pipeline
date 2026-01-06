@@ -3,4 +3,6 @@ vpc/.terraform.lock.hcl
 ec2/.terraform/
 ec2/.terraform.lock.hcl
 ec2/terraform.tfvars
+postgresql/.terraform/
+postgresql/.terraform.lock.hcl
 
