@@ -24,14 +24,14 @@ resource "aws_security_group_rule" "jenkins_ingress_from_nginx" {
   security_group_id        = aws_security_group.jenkins.id
 }
 
-resource "aws_security_group_rule" "jenkins_ingress_public" {
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.jenkins.id
-}
+# resource "aws_security_group_rule" "jenkins_ingress_public" {
+#   type              = "ingress"
+#   from_port         = 8080
+#   to_port           = 8080
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.jenkins.id
+# }
 
 resource "aws_security_group_rule" "jenkins_egress_all" {
   type              = "egress"
