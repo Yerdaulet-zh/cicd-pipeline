@@ -13,14 +13,14 @@ resource "aws_security_group_rule" "nginx_ingress_ssh" {
   security_group_id = aws_security_group.nginx.id
 }
 
-resource "aws_security_group_rule" "nginx_ingress_http" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.nginx.id
-}
+# resource "aws_security_group_rule" "nginx_ingress_http" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.nginx.id
+# }
 
 resource "aws_security_group_rule" "nginx_ingress_https" {
   type              = "ingress"
@@ -37,6 +37,15 @@ resource "aws_security_group_rule" "nginx_egress_to_jenkins" {
   to_port                  = 8080
   protocol                 = "tcp"
   source_security_group_id = aws_security_group.jenkins.id # Links to Jenkins
+  security_group_id        = aws_security_group.nginx.id
+}
+
+resource "aws_security_group_rule" "nginx_egress_to_sonarqube" {
+  type                     = "egress"
+  from_port                = 9000
+  to_port                  = 9000
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.sonarqube.id
   security_group_id        = aws_security_group.nginx.id
 }
 

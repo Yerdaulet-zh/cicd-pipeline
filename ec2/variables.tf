@@ -16,6 +16,12 @@ variable "sg_jenkins_id" {
   sensitive   = true
 }
 
+variable "sg_sonarqube_id" {
+  description = "The security group ID for the Sonarqube server"
+  type        = string
+  sensitive   = true
+}
+
 variable "ssh_key_pair_name" {
   description = "The name of the SSH key pair to access the EC2 instance"
   type        = string
