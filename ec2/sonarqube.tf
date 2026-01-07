@@ -20,6 +20,6 @@ resource "aws_instance" "sonarqube_instance" {
               EOF
 
   tags = {
-    Name    = "Sonarqube-Server"
+    Name = "Sonarqube-Server"
   }
 }
