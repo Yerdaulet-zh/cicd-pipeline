@@ -3,4 +3,8 @@ locals {
   project_name       = "cicd-epam-hw"
   vpc_cidr_block     = "10.0.0.0/16"
   subnet_public_cidr = "10.0.1.0/24"
+  private_subnets_cidrs = {
+    "10.0.2.0/24" = "a",
+    "10.0.3.0/24" = "b"
+  }
 }
