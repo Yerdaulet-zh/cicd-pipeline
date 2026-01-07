@@ -40,6 +40,15 @@ resource "aws_security_group_rule" "nginx_egress_to_jenkins" {
   security_group_id        = aws_security_group.nginx.id
 }
 
+resource "aws_security_group_rule" "nginx_egress_to_sonarqube" {
+  type = "egress"
+  from_port = 9000
+  to_port = 9000
+  protocol = "tcp"
+  source_security_group_id = aws_security_group.sonarqube.id
+  security_group_id = aws_security_group.nginx.id
+}
+
 resource "aws_security_group_rule" "nginx_egress_to_internet" {
   type              = "egress"
   from_port         = 0
