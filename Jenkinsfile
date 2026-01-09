@@ -17,15 +17,19 @@ pipeline {
         stage('Git Checkout') {
             steps { checkout scm }
         }
+        stage('Fix Permissions') {
+            steps {
+                sh 'sudo chown -R jenkins:jenkins .'
+                sh 'chmod +x scripts/*.sh'
+            }
+        }
         stage('Application Build') {
             steps {
-                sh 'chmod +x scripts/build.sh'
                 sh './scripts/build.sh'
             }
         }
         stage('Tests') {
             steps {
-                sh 'chmod +x scripts/test.sh'
                 sh './scripts/test.sh'
             }
         }
