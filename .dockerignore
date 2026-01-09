@@ -1,0 +1,15 @@
+# Infrastructure & CI
+vpc/
+postgresql/
+ec2/
+.git/
+sonar*
+.gitignore
+
+# Local dependencies (CRITICAL)
+node_modules/
+npm-debug.log
+
+# OS Junk
+.DS_Store
+Thumbs.db
