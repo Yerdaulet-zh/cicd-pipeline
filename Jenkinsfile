@@ -3,8 +3,9 @@ pipeline {
     
     tools {
         nodejs 'node7'
-        docker 'docker'
+        dockerTool 'docker' 
     }
+    
 
     environment {
         DOCKER_USER = 'samsantech'
