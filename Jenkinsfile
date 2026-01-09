@@ -3,7 +3,7 @@ pipeline {
     
     tools {
         nodejs 'node25'
-        dockerTool 'docker' 
+        // dockerTool 'docker' // Docker is pre-installed on Jenkins server
     }
     
 
@@ -16,12 +16,6 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps { checkout scm }
-        }
-        stage('Fix Permissions') {
-            steps {
-                sh 'sudo chown -R jenkins:jenkins .'
-                sh 'chmod +x scripts/*.sh'
-            }
         }
         stage('Application Build') {
             steps {
