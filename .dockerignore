@@ -5,6 +5,12 @@ ec2/
 .git/
 sonar*
 .gitignore
+sonar-project.properties
+
+# Test & Build Artifacts
+coverage/
+scripts/
+*.log
 
 # Local dependencies (CRITICAL)
 node_modules/
