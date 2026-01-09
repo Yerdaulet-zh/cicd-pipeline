@@ -8,7 +8,7 @@ resource "aws_instance" "jenkins_instance" {
 
   root_block_device {
     volume_type = "gp2"
-    volume_size = 8
+    volume_size = 20
   }
 
   user_data = <<-EOF
