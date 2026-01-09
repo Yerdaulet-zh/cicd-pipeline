@@ -1,10 +1,17 @@
 pipeline {
     agent any
+    
+    tools {
+        nodejs 'node7'
+        docker 'docker'
+    }
+
     environment {
         DOCKER_USER = 'samsantech'
-        DOCKER_REPO  = 'samsantech/cicd.epam'
+        DOCKER_REPO  = 'cicd.epam'
         DOCKER_HUB_CREDS = credentials('docker-hub-token')
     }
+    
     stages {
         stage('Git Checkout') {
             steps { checkout scm }
