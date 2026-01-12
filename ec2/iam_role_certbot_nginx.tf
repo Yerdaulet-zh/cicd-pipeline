@@ -41,6 +41,11 @@ resource "aws_iam_role_policy_attachment" "certbot_attach" {
   policy_arn = aws_iam_policy.certbot_route53.arn
 }
 
+resource "aws_iam_role_policy_attachment" "cloudwatch_attach" {
+  role       = aws_iam_role.nginx_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
 resource "aws_iam_instance_profile" "nginx_profile" {
   name = "nginx-instance-profile"
   role = aws_iam_role.nginx_role.name
